@@ -12,6 +12,13 @@ namespace MatchingGame
 {
     public partial class Form1 : Form
     {
+        Random random = new Random();
+        List<string> icons = new List<string>()
+        {
+            "!", "!", "D", "D", "k", "k", "o", "o",
+            ";", ";", "s", "s", "E", "E", "x", "x"
+        };
+  
         public Form1()
         {
             InitializeComponent();
