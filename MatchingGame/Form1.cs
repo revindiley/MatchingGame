@@ -47,6 +47,10 @@ namespace MatchingGame
 
         private void label_click(object sender, EventArgs e)
         {
+
+            if (timer1.Enabled == true)
+                return;
+
             Label clickedLabel = sender as Label;
             if (clickedLabel != null)
             {
@@ -60,7 +64,21 @@ namespace MatchingGame
                     firstClicked.ForeColor = Color.Black;
                     return;
                 }
+
+                secondClicked = clickedLabel;
+                secondClicked.ForeColor = Color.Black;
+
+                timer1.Start();
             }
+        }
+
+        private void timer1_Tick(object sender, EventArgs e)
+        {
+            timer1.Stop();
+            firstClicked.ForeColor = firstClicked.BackColor;
+            secondClicked.ForeColor = secondClicked.BackColor;
+            firstClicked = null;
+            secondClicked = null;
         }
     }
 }
