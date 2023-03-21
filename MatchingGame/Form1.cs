@@ -68,6 +68,8 @@ namespace MatchingGame
                 secondClicked = clickedLabel;
                 secondClicked.ForeColor = Color.Black;
 
+                CheckForWinner();
+
                 if (firstClicked.Text == secondClicked.Text)
                 {
                     firstClicked = null;
@@ -86,6 +88,23 @@ namespace MatchingGame
             secondClicked.ForeColor = secondClicked.BackColor;
             firstClicked = null;
             secondClicked = null;
+        }
+
+        private void CheckForWinner()
+        {
+            foreach (Control control in tableLayoutPanel1.Controls)
+            {
+                Label iconLabel = control as Label;
+
+                if (iconLabel != null)
+                {
+                    if (iconLabel.ForeColor == iconLabel.BackColor) 
+                        return;
+                }
+            }
+
+            MessageBox.Show("CONGRATULATIONS! You succesfully matched all of the icons!");
+            Close();
         }
     }
 }
